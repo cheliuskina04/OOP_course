@@ -18,10 +18,8 @@ public class StringCalculator {
                 return -1;
             }
 
-            if(split_strings.length<3)
-                return all_nums.stream().mapToInt(i -> i).sum();
-            System.out.println("ERROR: There is more than 2 numbers.");
-            return -1;
+            return all_nums.stream().mapToInt(i -> i).sum();
+
         }
     }
 }
