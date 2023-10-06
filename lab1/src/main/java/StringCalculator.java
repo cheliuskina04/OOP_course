@@ -8,7 +8,7 @@ public class StringCalculator {
             return 0;
 
         } else { //string is not empty
-            String[] split_strings = text.split(",");
+            String[] split_strings = text.split("[,\n]");
             List<Integer> all_nums = new ArrayList<Integer>();  //list of nums to add
             try {
                 for (int i = 0; i < split_strings.length; i++)
