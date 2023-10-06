@@ -49,5 +49,15 @@ class StringCalculatorTest {
     public void three_number_two_delimeters() {
         assertEquals(10, StringCalculator.add("1\n1,8"));
     }
+
+    //STEP 4
+    @Test
+    public void my_delimiter() {
+        assertEquals(6, StringCalculator.add("//;\n1;2;3"));
+    }
+    @Test
+    public void my_delimiter1() {
+        assertEquals(11, StringCalculator.add("//;\n1,5;4\n1"));
+    }
 }
 
