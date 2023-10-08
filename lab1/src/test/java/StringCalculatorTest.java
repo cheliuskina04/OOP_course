@@ -98,6 +98,16 @@ class StringCalculatorTest {
         assertEquals(20, StringCalculator.add("//[e]\n1e2,8e1\n8"));
     }
 
+    //STEP 8
+    @Test
+    public void more_delimiters() {
+        assertEquals(100, StringCalculator.add("//[*][/]\n10*80/10"));
+    }
+    @Test
+    public void more_delimiter2() {
+        assertEquals(20, StringCalculator.add("//[e][x]\n1e2,8x1\n8"));
+    }
+
 
 }
 
