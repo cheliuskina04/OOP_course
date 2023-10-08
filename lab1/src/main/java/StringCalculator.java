@@ -1,7 +1,13 @@
+
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+
+import static java.lang.String.join;
+import static java.lang.System.exit;
 
 public class StringCalculator {
     public static int add(String text) {
@@ -26,7 +32,7 @@ public class StringCalculator {
                             all_nums.add(j, Integer.parseInt(split_strings[j]));
                     } catch (NumberFormatException ex) {
                         System.out.println("ERROR: There is smth except except numbers or odd delimiters.");
-                        return -1;
+                        exit(1);
                     }
                 }
 
@@ -41,7 +47,18 @@ public class StringCalculator {
                     return -1;
                 }
             }
-            return all_nums.stream().mapToInt(i -> i).sum();
+            List<Integer> negative_nums = new ArrayList<>();
+            for(int i = 0; i<all_nums.toArray().length; i++)
+                if(all_nums.get(i)<0)
+                    negative_nums.add(all_nums.get(i));
+
+
+
+            if (negative_nums.toArray().length >0)
+                throw new RuntimeException("ERROR: There are negative numbers: " + join(",", Arrays.toString(negative_nums.toArray())));
+            else
+                 return all_nums.stream().mapToInt(i -> i).sum();
         }
     }
 }
+

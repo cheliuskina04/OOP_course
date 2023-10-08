@@ -59,5 +59,25 @@ class StringCalculatorTest {
     public void my_delimiter1() {
         assertEquals(11, StringCalculator.add("//;\n1,5;4\n1"));
     }
+    //STEP 5
+    @Test
+    public void negative_num() {
+        try{
+            StringCalculator.add("1,-2\n3");
+           fail();
+        }catch (RuntimeException ex){
+            assertEquals("ERROR: There are negative numbers: [-2]", ex.getMessage());
+        }
+    }
+    @Test
+    public void negative_nums() {
+
+        try{
+            StringCalculator.add("0,0,5,100,-9,-4,2,-100");
+            fail();
+        }catch (RuntimeException ex){
+            assertEquals("ERROR: There are negative numbers: [-9, -4, -100]", ex.getMessage());
+        }
+    }
 }
 
