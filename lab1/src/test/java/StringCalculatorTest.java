@@ -116,6 +116,10 @@ class StringCalculatorTest {
     public void very_more_delimiter2() {
         assertEquals(20, StringCalculator.add("//[ee][xxx]\n1ee2,8xxx1\n8"));
     }
+//    @Test
+//    public void custom_test() {
+//        assertEquals(1, StringCalculator.add("1"));
+//    }
 
 }
 
