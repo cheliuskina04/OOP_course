@@ -79,5 +79,11 @@ class StringCalculatorTest {
             assertEquals("ERROR: There are negative numbers: [-9, -4, -100]", ex.getMessage());
         }
     }
+
+    //STEP 6
+    @Test
+    public void too_big_nums() {
+        assertEquals(1020, StringCalculator.add("5,1001,15,1000"));
+    }
 }
 
