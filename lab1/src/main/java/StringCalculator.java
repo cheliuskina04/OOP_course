@@ -1,7 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class StringCalculator {
+    public static void main(String[] args){
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter string: ");
+
+            String mystring = sc.nextLine();
+            System.out.println(add(mystring));
+        }
+
     public static int add(String text) {
 
         if (text.isEmpty()) {  //empty string
