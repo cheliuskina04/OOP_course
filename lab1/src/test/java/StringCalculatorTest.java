@@ -39,5 +39,15 @@ class StringCalculatorTest {
     public void five_number() {
         assertEquals(404, StringCalculator.add("400,0,1,3"));
     }
+
+    //STEP 3
+    @Test
+    public void two_number_two_delimeters() {
+        assertEquals(-1, StringCalculator.add("1,\n1"));
+    }
+    @Test
+    public void three_number_two_delimeters() {
+        assertEquals(10, StringCalculator.add("1\n1,8"));
+    }
 }
 
