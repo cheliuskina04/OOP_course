@@ -3,12 +3,17 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 import static java.lang.String.join;
 
 public class StringCalculator {
+    public static void main(String[] args){
+        String mystring = "//[!][*][**]\n1,1!1\n1**1005*1";
+        System.out.println("Result: " + add(mystring));
+    }
     public static int add(String text) {
 
         if (text.isEmpty()) {  //empty string
@@ -22,10 +27,10 @@ public class StringCalculator {
                 match_text.matches();
                 String[] my_delimiters = match_text.group(2).split("]\\[");
                 text = match_text.group(3);
-                for(int i = 0 ; i <my_delimiters.length; i++){
+                Arrays.sort(my_delimiters, (a, b)->Integer.compare(b.length(), a.length()));
 
+                for(int i = 0 ; i <my_delimiters.length; i++){
                     text = text.replace(my_delimiters[i], ",");
-                    System.out.println(my_delimiters[i] + "   "+ text);
                 }
                 split_strings = text.split("[,\n]");
             }
