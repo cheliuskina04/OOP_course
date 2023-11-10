@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 import static java.lang.String.join;
-import static java.lang.System.exit;
 
 
 public class StringCalculator {
@@ -25,10 +24,16 @@ public class StringCalculator {
             List<Integer> all_nums = new ArrayList<Integer>();  //list of nums to add
 
             if (text.startsWith("//")) {
-                Matcher match_text = Pattern.compile("//\\[(.+)]\n(.*)", Pattern.DOTALL).matcher(text);
+                Matcher match_text = Pattern.compile("//(\\[(.+)])+\n(.*)", Pattern.DOTALL).matcher(text);
                 match_text.matches();
-                String my_delimiter = match_text.group(1);
-                split_strings = match_text.group(2).replace(my_delimiter, ",").split("[,\n]");
+                String[] my_delimiters = match_text.group(2).split("]\\[");
+                text = match_text.group(3);
+                for(int i = 0 ; i <my_delimiters.length; i++){
+
+                    text = text.replace(my_delimiters[i], ",");
+                    System.out.println(my_delimiters[i] + "   "+ text);
+                }
+                split_strings = text.split("[,\n]");
             }
              else {
                 split_strings = text.split("[,\n]");
