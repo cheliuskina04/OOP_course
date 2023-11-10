@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-
-
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -71,7 +66,7 @@ public class StringCalculator {
             if (negative_nums.toArray().length >0)
                 throw new RuntimeException("ERROR: There are negative numbers: " + join(",", Arrays.toString(negative_nums.toArray())));
             else
-                 return all_nums.stream().mapToInt(i -> i).sum();
+                 return all_nums.stream().mapToInt(i -> i).filter(i -> i<=1000).sum();
         }
     }
 }
