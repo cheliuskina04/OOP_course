@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.Scanner;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringCalculatorTest {
@@ -54,11 +56,11 @@ class StringCalculatorTest {
     //STEP 4
     @Test
     public void my_delimiter() {
-        assertEquals(6, StringCalculator.add("//;\n1;2;3"));
+        assertEquals(6, StringCalculator.add("//[;]\n1;2;3"));
     }
     @Test
     public void my_delimiter1() {
-        assertEquals(11, StringCalculator.add("//;\n1,5;4\n1"));
+        assertEquals(11, StringCalculator.add("//[;]\n1,5;4\n1"));
     }
     //STEP 5
     @Test
@@ -86,5 +88,17 @@ class StringCalculatorTest {
     public void too_big_nums() {
         assertEquals(1020, StringCalculator.add("5,1001,15,1000"));
     }
+
+    //STEP 7
+    @Test
+    public void long_delimiter() {
+        assertEquals(100, StringCalculator.add("//[***]\n10***80***10"));
+    }
+    @Test
+    public void long_delimiter2() {
+        assertEquals(20, StringCalculator.add("//[e]\n1e2,8e1\n8"));
+    }
+
+
 }
 
