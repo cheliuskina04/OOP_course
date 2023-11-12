@@ -15,7 +15,7 @@ class Matrix {
         this.content = matrix.content;
     }
 
-    //METHODS---------------------------------------------
+    //NON-STATIC METHODS---------------------------------------------
     public void print_matrix(){ //print matrix
         System.out.println("========================");
         for (int[] ints : content) {
@@ -36,6 +36,24 @@ class Matrix {
             }
         }
     }
+    public int get(int row, int column){
+        return content[row-1][column-1];
+    }
+    public Matrix getrow(int row){
+        Matrix res = new Matrix();
+        res.fill(new int[][]{content[row - 1]});
+        return res;
+    }
+    public Matrix getcolumn(int column){
+        Matrix res = new Matrix();
+        int[][] my_column = new int[content.length][1];
+        for (int n = 0; n<content.length; n++) {
+                my_column[n][0] = content[n][column-1];
+            }
+        res.fill(my_column);
+        return res;
+    }
+
 }
 
 

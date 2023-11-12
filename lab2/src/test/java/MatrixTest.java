@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,8 +8,8 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MatrixTest {
-
     int[][] zero_matrix = {{0, 0, 0}, {0, 0, 0}};
+    int[][] example = {{1, 2, 3, 4}, {2, 3, 4, 5}, {3, 4, 5, 6}};
 
     @Test
     @DisplayName("Empty matrix")
@@ -33,4 +34,17 @@ class MatrixTest {
         assertArrayEquals(matrix.getcontent(), user_content);
     }
 
+    @Test
+    @DisplayName("Get column, row and number")
+    public void test4() {
+        Matrix matrix = new Matrix();
+        matrix.fill(example);
+        assertEquals(3, matrix.get(2,2));
+        assertArrayEquals(example[1], matrix.getrow(2).getcontent()[0]);
+        for (int n = 0; n>3; n++) {
+            assertEquals(example[n][1], matrix.getcolumn(2).getcontent()[n][0]);
+
+        }
+
+    }
 }

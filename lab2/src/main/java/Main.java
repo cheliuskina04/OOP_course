@@ -9,6 +9,9 @@ public class Main {
         Matrix matrix2 = new Matrix(7,8);
         matrix2.fill();
         matrix2.print_matrix();
+        System.out.println(matrix2.get(7,8));
+        matrix2.getrow(2).print_matrix();
+        matrix2.getcolumn(3).print_matrix();
 
     }
 
