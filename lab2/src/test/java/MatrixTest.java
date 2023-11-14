@@ -47,4 +47,12 @@ class MatrixTest {
         }
 
     }
+    @Test
+    @DisplayName("Get column, row and number")
+    public void test5() {
+        Matrix matrix = new Matrix();
+        matrix.fill(example);
+        assertArrayEquals(new int[] {3,4}, matrix.getdemention());
+
+    }
 }

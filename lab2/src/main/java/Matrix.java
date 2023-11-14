@@ -54,6 +54,9 @@ class Matrix {
         return res;
     }
 
+    public int[] getdemention(){
+         return new int[] {content.length, content[0].length};
+    }
 }
 
 

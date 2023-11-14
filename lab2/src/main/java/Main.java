@@ -12,7 +12,8 @@ public class Main {
         System.out.println(matrix2.get(7,8));
         matrix2.getrow(2).print_matrix();
         matrix2.getcolumn(3).print_matrix();
-
+        int[] dem = matrix2.getdemention();
+        System.out.println(dem[0]+"x"+dem[1]);
     }
 
 
