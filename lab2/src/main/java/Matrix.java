@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 class Matrix {
@@ -57,6 +58,25 @@ class Matrix {
     public int[] getdemention(){
          return new int[] {content.length, content[0].length};
     }
+
+    @Override
+    public boolean equals(Object ob) {
+        if (ob == this)
+            return true;
+        if (!(ob instanceof Matrix))
+            return false;
+return ((Matrix) ob).content == content;
+    }
+
+    @Override
+    public int hashCode(){
+        int retVal = 0;
+        for (int[] ints : content) {
+            retVal += Arrays.hashCode(ints);
+        }
+        return retVal;
+    }
 }
+
 
 

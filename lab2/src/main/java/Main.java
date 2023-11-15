@@ -14,6 +14,12 @@ public class Main {
         matrix2.getcolumn(3).print_matrix();
         int[] dem = matrix2.getdemention();
         System.out.println(dem[0]+"x"+dem[1]);
+        System.out.println(matrix1.equals(matrix2));
+        String i = "erer";
+        System.out.println(matrix1.equals(i));
+        System.out.println(matrix1.equals(matrix1));
+        matrix2.fill(matrix1.getcontent());
+        System.out.println(matrix1.equals(matrix2));
     }
 
 

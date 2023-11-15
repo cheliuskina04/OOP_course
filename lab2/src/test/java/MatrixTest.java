@@ -48,11 +48,38 @@ class MatrixTest {
 
     }
     @Test
-    @DisplayName("Get column, row and number")
+    @DisplayName("Get demention")
     public void test5() {
         Matrix matrix = new Matrix();
         matrix.fill(example);
         assertArrayEquals(new int[] {3,4}, matrix.getdemention());
-
     }
+
+    @Test
+    @DisplayName("Only equals")
+    public void test6() {
+        Matrix matrix1 = new Matrix();
+        Matrix matrix2 = new Matrix(2,2);
+        String i = "erer";
+
+        assertTrue(matrix1.equals(matrix2) == matrix2.equals(matrix1)&&
+                !matrix2.equals(matrix1));
+        assertTrue(matrix1.equals(i)== i.equals(matrix1)&&
+                !matrix1.equals(i));
+        assertTrue(matrix1.equals(matrix1));
+        matrix2.fill(matrix1.getcontent());
+        assertTrue(matrix1.equals(matrix2)==matrix2.equals(matrix1)
+        && matrix1.equals(matrix2));
+    }
+    @Test
+    @DisplayName("Onle equals")
+    public void test7() {
+        Matrix matrix1 = new Matrix(3,5);
+        Matrix matrix2 = new Matrix(matrix1);
+
+        assertTrue(matrix1.hashCode() == matrix2.hashCode());
+        assertTrue(matrix1.hashCode() == matrix1.hashCode());
+    }
+
+
 }
