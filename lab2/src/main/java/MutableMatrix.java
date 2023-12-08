@@ -66,8 +66,18 @@ class MutableMatrix implements matrix {
         return new ImmutableMatrix(res);
     }
 
-
-
+    /**створює рандомну матрицю рядок*/
+    public static ImmutableMatrix randomRow(int n){
+        MutableMatrix res =  new MutableMatrix(1,n);
+res.fill();
+        return new ImmutableMatrix(res);
+    }
+    /**створює рандомну матрицю стовпчик*/
+    public static ImmutableMatrix randomColumn(int n){
+        MutableMatrix res =  new MutableMatrix(n,1);
+        res.fill();
+        return new ImmutableMatrix(res);
+    }
 
 
 }

@@ -133,4 +133,11 @@ class MatrixTest {
                 int[][] {{1,0,0},{0,1,0},{0,0,1}});
     }
 
+    @Test
+    @DisplayName("Random Row")
+    public void test14() {
+        assertEquals(ImmutableMatrix.randomRow(3).getContent().length, 1);
+        assertEquals(ImmutableMatrix.randomRow(3).getContent()[0].length, 3);
+    }
+
 }
