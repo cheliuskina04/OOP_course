@@ -125,4 +125,12 @@ class MatrixTest {
                 int[][] {{1,0,0},{0,2,0},{0,0,3}});
     }
 
+
+    @Test
+    @DisplayName("One Matrices")
+    public void test13() throws Exception {
+        assertArrayEquals(ImmutableMatrix.oneMatrix(3).getContent(), new
+                int[][] {{1,0,0},{0,1,0},{0,0,1}});
+    }
+
 }

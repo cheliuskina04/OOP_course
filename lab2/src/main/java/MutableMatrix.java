@@ -48,12 +48,20 @@ class MutableMatrix implements matrix {
         return retVal;
     }
 
-    //STATIC METHODS
-    //***/
+    //STATIC METHODS WHICH EXTENDING
+    /**створює діогональну матрицю з вектора*/
     public static ImmutableMatrix diagonalMatrix(int[] vector){
         int[][] res = new int[vector.length][vector.length];
         for(int i = 0; i<vector.length; i++){
             res[i][i] = vector[i];
+        }
+        return new ImmutableMatrix(res);
+    }
+/**створює одиничну матрицю*/
+    public static ImmutableMatrix oneMatrix(int n){
+        int[][] res = new int[n][n];
+        for(int i = 0; i<n; i++){
+            res[i][i] = 1;
         }
         return new ImmutableMatrix(res);
     }
