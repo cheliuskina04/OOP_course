@@ -38,11 +38,10 @@ class MatrixTest {
         MutableMatrix matrix = new MutableMatrix();
         matrix.fill(example);
         assertEquals(3, matrix.get(2,2));
-        assertArrayEquals(example[1], matrix.getRow(2).getContent()[0]);
-        for (int n = 0; n>3; n++) {
-            assertEquals(example[n][1], matrix.getColumn(2).getContent()[n][0]);
+        assertArrayEquals(example[1], matrix.getRow(2));
+        assertArrayEquals(new int[] {2,3,4}, matrix.getColumn(2));
 
-        }
+
 
     }
     @Test
@@ -91,12 +90,23 @@ class MatrixTest {
     }
 
     @Test
-    @DisplayName("Multiplying Matrixes")
+    @DisplayName("Multiplying Matrixes on Scalar")
     public void test9() throws Exception {
         MutableMatrix matrix1 = new MutableMatrix();
         matrix1.fill(example);
         assertArrayEquals(matrix1.multiplyMatrixOnScalar(2), new
                 int[][] {{2, 4, 6, 8}, {4, 6, 8, 10}, {6, 8, 10, 12}});
+    }
+
+    @Test
+    @DisplayName("Multiplying Matrices")
+    public void test10() throws Exception {
+        MutableMatrix matrix1 = new MutableMatrix();
+        matrix1.fill(new int[][]{{1,2,3},{1,0,1}});
+        MutableMatrix matrix2 = new MutableMatrix();
+        matrix2.fill(new int[][]{{2,1},{1,5}});
+        assertArrayEquals(matrix2.multiplyMatrix(matrix1), new
+                int[][] {{3,4,7}, {6,2,8}});
     }
 
 }

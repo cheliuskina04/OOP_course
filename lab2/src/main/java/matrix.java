@@ -34,20 +34,20 @@ public interface matrix {
     /**
      * отримати рядок матриці
      */
-    default ImmutableMatrix getRow(int row) {
-        return new ImmutableMatrix(new int[][]{this.getContent()[row - 1]});
+    default int[] getRow(int row) {
+        return this.getContent()[row - 1];
     }
 
     /**
      * отримати стовпчик матриці
      */
-    default ImmutableMatrix getColumn(int column) {
+    default int[] getColumn(int column) {
         int[][] content = matrix.this.getContent();
-        int[][] my_column = new int[content.length][1];
+        int[] my_column = new int[content.length];
         for (int n = 0; n < content.length; n++) {
-            my_column[n][0] = content[n][column - 1];
+            my_column[n] = content[n][column - 1];
         }
-        return new ImmutableMatrix(my_column);
+        return my_column;
     }
 
     /**
@@ -86,6 +86,28 @@ public interface matrix {
         return result;
     }
 
+    /**
+     * множення матриць
+     */
+    default int[][] multiplyMatrix(matrix m) throws Exception {
+        int[] dem = matrix.this.getDemention();
+        int[] dem_m = m.getDemention();
+
+        if (dem[1]==dem_m[0]) {
+            int[][] result = new int[dem[0]][dem_m[1]];
+            for(int i = 0; i< dem[0]; i++){
+                int[] row = matrix.this.getRow(i+1);
+                for(int j = 0; j< dem_m[1]; j++) {
+                    int[] column = m.getColumn(j + 1);
+                    result[i][j] = 0;
+                    for (int n = 0; n < row.length; n++) {
+                        result[i][j] += row[n] * column[n];
+                    }
+                }
+            }
+            return result;
+        } else throw new Exception("Матриці не сумісні");
+    }
 
 
 }
