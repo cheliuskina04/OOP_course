@@ -79,5 +79,24 @@ class MatrixTest {
         assertTrue(matrix1.hashCode() == matrix1.hashCode());
     }
 
+    @Test
+    @DisplayName("Adding Matrixes")
+    public void test8() throws Exception {
+        MutableMatrix matrix1 = new MutableMatrix();
+        matrix1.fill(example);
+        MutableMatrix matrix2 = new MutableMatrix();
+        matrix2.fill(new int[][] {{1,1,1,1},{1,1,1,1},{1,1,1,1}});
+        assertArrayEquals(matrix1.addMatrixes(matrix2), new
+     int[][] {{2, 3, 4, 5}, {3, 4, 5, 6}, {4, 5, 6, 7}});
+    }
+
+    @Test
+    @DisplayName("Multiplying Matrixes")
+    public void test9() throws Exception {
+        MutableMatrix matrix1 = new MutableMatrix();
+        matrix1.fill(example);
+        assertArrayEquals(matrix1.multiplyMatrixOnScalar(2), new
+                int[][] {{2, 4, 6, 8}, {4, 6, 8, 10}, {6, 8, 10, 12}});
+    }
 
 }
