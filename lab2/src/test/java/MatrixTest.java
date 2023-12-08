@@ -85,7 +85,7 @@ class MatrixTest {
         matrix1.fill(example);
         MutableMatrix matrix2 = new MutableMatrix();
         matrix2.fill(new int[][] {{1,1,1,1},{1,1,1,1},{1,1,1,1}});
-        assertArrayEquals(matrix1.addMatrixes(matrix2), new
+        assertArrayEquals(matrix1.addMatrixes(matrix2).getContent(), new
      int[][] {{2, 3, 4, 5}, {3, 4, 5, 6}, {4, 5, 6, 7}});
     }
 
@@ -94,7 +94,7 @@ class MatrixTest {
     public void test9() throws Exception {
         MutableMatrix matrix1 = new MutableMatrix();
         matrix1.fill(example);
-        assertArrayEquals(matrix1.multiplyMatrixOnScalar(2), new
+        assertArrayEquals(matrix1.multiplyMatrixOnScalar(2).getContent(), new
                 int[][] {{2, 4, 6, 8}, {4, 6, 8, 10}, {6, 8, 10, 12}});
     }
 
@@ -105,8 +105,17 @@ class MatrixTest {
         matrix1.fill(new int[][]{{1,2,3},{1,0,1}});
         MutableMatrix matrix2 = new MutableMatrix();
         matrix2.fill(new int[][]{{2,1},{1,5}});
-        assertArrayEquals(matrix2.multiplyMatrix(matrix1), new
+        assertArrayEquals(matrix2.multiplyMatrix(matrix1).getContent(), new
                 int[][] {{3,4,7}, {6,2,8}});
+    }
+
+    @Test
+    @DisplayName("Transpose Matrices")
+    public void test11() throws Exception {
+        MutableMatrix matrix1 = new MutableMatrix();
+        matrix1.fill(new int[][]{{1,2,3},{1,0,1}});
+        assertArrayEquals(matrix1.transposeMatrix().getContent(), new
+                int[][] {{1,1},{2,0},{3,1}});
     }
 
 }

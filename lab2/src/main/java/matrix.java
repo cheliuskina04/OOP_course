@@ -1,7 +1,4 @@
-
-
 import java.util.Arrays;
-import java.util.stream.IntStream;
 
 public interface matrix {
     /**
@@ -60,7 +57,7 @@ public interface matrix {
     /**
      * додавання матриць
      */
-    default int[][] addMatrixes(matrix m) throws Exception {
+    default ImmutableMatrix addMatrixes(matrix m) throws Exception {
         if (Arrays.equals(matrix.this.getDemention(), m.getDemention())) {
             int[][] result = new int[m.getDemention()[0]][m.getDemention()[1]];
             for (int row = 0; row < m.getDemention()[0]; row++) {
@@ -68,14 +65,14 @@ public interface matrix {
                     result[row][column] = matrix.this.get(row+1, column+1) + m.get(row+1, column+1);
                 }
             }
-            return result;
+            return new ImmutableMatrix(result);
         } else throw new Exception("Матриці мають різну розмірність");
     }
 
     /**
      * множення матриці на скаляр
      */
-    default int[][] multiplyMatrixOnScalar(int num) {
+    default ImmutableMatrix multiplyMatrixOnScalar(int num) {
         int[] dem = matrix.this.getDemention();
         int[][] result = new int[dem[0]][dem[1]];
         for (int row = 0; row < dem[0]; row++) {
@@ -83,13 +80,13 @@ public interface matrix {
                 result[row][column] = matrix.this.get(row+1, column+1) * num;
             }
         }
-        return result;
+        return new ImmutableMatrix(result);
     }
 
     /**
      * множення матриць
      */
-    default int[][] multiplyMatrix(matrix m) throws Exception {
+    default ImmutableMatrix multiplyMatrix(matrix m) throws Exception {
         int[] dem = matrix.this.getDemention();
         int[] dem_m = m.getDemention();
 
@@ -105,10 +102,20 @@ public interface matrix {
                     }
                 }
             }
-            return result;
+            return new ImmutableMatrix(result);
         } else throw new Exception("Матриці не сумісні");
     }
-
+    /**
+     * транспонування матриці
+     */
+    default ImmutableMatrix transposeMatrix() throws Exception {
+        int[] dem = matrix.this.getDemention();
+        int[][] result = new int[dem[1]][dem[0]];
+        for (int i = 0; i<dem[1]; i++){
+            result[i] = matrix.this.getColumn(i+1);
+        }
+        return new ImmutableMatrix(result);
+    }
 
 }
 
