@@ -118,4 +118,11 @@ class MatrixTest {
                 int[][] {{1,1},{2,0},{3,1}});
     }
 
+    @Test
+    @DisplayName("Diagonal Matrices")
+    public void test12() throws Exception {
+        assertArrayEquals(ImmutableMatrix.diagonalMatrix(new int[] {1,2,3}).getContent(), new
+                int[][] {{1,0,0},{0,2,0},{0,0,3}});
+    }
+
 }
