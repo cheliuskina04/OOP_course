@@ -49,7 +49,7 @@ class MatrixTest {
     public void test5() {
         MutableMatrix matrix = new MutableMatrix();
         matrix.fill(example);
-        assertArrayEquals(new int[] {3,4}, matrix.getDemention());
+        assertArrayEquals(new int[] {3,4}, matrix.getDimension());
     }
 
     @Test
@@ -140,4 +140,18 @@ class MatrixTest {
         assertEquals(ImmutableMatrix.randomRow(3).getContent()[0].length, 3);
     }
 
+    @Test
+    @DisplayName("Trigonal Matrix")
+    public void test15() throws Exception {
+        MutableMatrix matrix1 = new MutableMatrix();
+        matrix1.fill(new int[][]{{1, 2, 3}, {2, 4, 0}, {7, 3, 2}});
+        assertArrayEquals(matrix1.trigonalMatrixUp().getContent(), new
+                int[][]{{1, 2, 3}, {0, -11, -19}, {0, 0, -6}});
+
+        matrix1.fill(new int[][]{{1, 3, 2, -1}, {2, 4, 0, 1}, {-1, 3, 2, -4}, {3, 3, -2, 5}});
+        matrix1.trigonalMatrixUp().printMatrix();
+        assertArrayEquals(matrix1.trigonalMatrixUp().getContent(), new
+                int[][]{{1, 3, 2, -1}, {0, -2, -4, 3}, {0, 0, -8, 4}, {0, 0, 0, 1}});
+
+    }
 }
